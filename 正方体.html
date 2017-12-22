@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            height: 100%;
+            overflow: hidden;
+            background-image:linear-gradient(-45deg,gray , black);
+
+        }
+        #wrap{
+            position: relative;
+            top: 50%;
+            left:50%;
+            transform:translate3d(-50%,-50%,0);
+            width: 310px;
+            height: 310px;
+            perspective: 500px;
+        }
+        #box{
+            position: relative;
+            width: 310px;
+            height: 310px;
+            transform-style:preserve-3d;
+            transform-origin: center center -155px;
+            animation:move 3s 1s linear infinite;
+        }
+
+        @keyframes move {
+            0%{transform:rotate3d(1,0,1,0)}
+            100%{transform:rotate3d(0,1,1,360deg)}
+        }
+
+        .item{
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background:rgba(0,0,0,0.1);
+            color: white;
+            font-size: 30px;
+            border-radius:20%;
+            border: 5px solid skyblue;
+            text-align: center;
+            line-height: 300px;
+            transition:1s;
+        }
+        #boxInner{
+            position: absolute;
+            left:0;
+            top: 0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            width: 110px;
+            height: 110px;
+        }
+        .inner{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background:rgba(255,255,255,0.6);
+            border-radius:20%;
+            border: 5px solid black;
+            text-align: center;
+            line-height: 100px;
+        }
+        .inner:nth-child(1){
+            top: -110px;
+            transform-origin:bottom;
+            transform:rotateX(90deg) translateY(-100px);
+        }
+        .inner:nth-child(2){
+            top: 110px;
+            transform-origin:top;
+            transform:rotateX(-90deg) translateY(100px);
+        }
+        .inner:nth-child(3){
+            left: -110px;
+            transform-origin:right;
+            transform:rotateY(-90deg) translateX(-100px);
+        }
+        .inner:nth-child(4){
+            left: 110px;
+            transform-origin:left;
+            transform:rotateY(90deg) translateX(100px);
+        }
+        .inner:nth-child(5){
+            z-index: 1;
+            transform:translateZ(-100px);
+        }
+        .inner:nth-child(6){
+            transform:translateZ(-205px)
+        }
+
+
+
+        .item:nth-child(1){
+            top: -310px;
+            transform-origin:bottom;
+            transform:rotateX(90deg)
+        }
+        .item:nth-child(2){
+            top: 310px;
+            transform-origin:top;
+            transform:rotateX(-90deg)
+        }
+        .item:nth-child(3){
+            left: -310px;
+            transform-origin:right;
+            transform:rotateY(-90deg)
+        }
+        .item:nth-child(4){
+            left: 310px;
+            transform-origin:left;
+            transform:rotateY(90deg)
+        }
+        .item:nth-child(5){
+            z-index: 1;
+        }
+        .item:nth-child(6){
+            transform:translateZ(-305px)
+        }
+
+
+        #box:hover .item:nth-child(1){
+            transform:rotateX(90deg) translateZ(100px) ;
+        }
+        #box:hover .item:nth-child(2){
+            transform:rotateX(-90deg) translateZ(100px) ;
+        }
+        #box:hover .item:nth-child(3){
+            transform:rotateY(-90deg) translateZ(100px) ;
+        }
+        #box:hover .item:nth-child(4){
+            transform:rotateY(90deg) translateZ(100px) ;
+        }
+        #box:hover .item:nth-child(5){
+            transform:translateZ(100px);
+        }
+        #box:hover .item:nth-child(6){
+            transform:translateZ(-405px);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="box">
+            <div class="item">I</div>
+            <div class="item">II</div>
+            <div class="item">III</div>
+            <div class="item">IV</div>
+            <div class="item">V</div>
+            <div class="item">VI</div>
+
+            <div id="boxInner">
+                <span class="inner">1</span>
+                <span class="inner">2</span>
+                <span class="inner">3</span>
+                <span class="inner">4</span>
+                <span class="inner">5</span>
+                <span class="inner">6</span>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
